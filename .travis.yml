@@ -1,0 +1,7 @@
+language: python
+python: 3.6.5
+sudo: true
+install:
+- npm install eyo -g
+script:
+- eyo --lint Sasha__Testing--EYo.txt

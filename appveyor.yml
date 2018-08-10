@@ -1,0 +1,19 @@
+environment:
+
+  matrix:
+
+    - PYTHON: "C:\\Python36-x64"
+      PYTHON_VERSION: "3.6.5"
+      PYTHON_ARCH: "64"
+
+platform: x64
+
+install:
+
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - cinst node -y
+  - npm install eyo -g
+
+build_script:
+
+  - eyo --lint Sasha__Testing--EYo.txt
