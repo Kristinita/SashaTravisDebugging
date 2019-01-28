@@ -6,7 +6,7 @@ python: 3.7
 git:
   depth: 1
 install:
-- sudo apt-get install dotnet-sdk-2.1
+- sudo apt-cache search dotnet-sdk
 - dotnet tool install -g localappveyor --version 0.5.0-alpha.10
 script:
 - localappveyor lint --token $APPVEYOR_API_KEY
