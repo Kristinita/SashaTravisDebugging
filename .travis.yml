@@ -3,11 +3,10 @@ sudo: enabled
 dist: xenial
 language: python
 python: 3.7
-mono: none
-dotnet: 2.1
 git:
   depth: 1
 install:
+- sudo apt-get install dotnet-sdk-2.1
 - dotnet tool install -g localappveyor --version 0.5.0-alpha.10
 script:
 - localappveyor lint --token $APPVEYOR_API_KEY
