@@ -14,6 +14,8 @@ install:
 - PATH=$PATH:~/home/travis/.dotnet/tools
 - PATH=~/home/travis/.dotnet/tools:$PATH
 script:
+# https://stackoverflow.com/a/105249/5951529
+- cd $HOME/travis/.dotnet && ls -LR && tree -l
 # which and whereis:
 # https://superuser.com/a/461790/572069
 - which LocalAppVeyor
