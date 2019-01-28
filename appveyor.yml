@@ -1,19 +1,11 @@
+clone_depth: 1
+
 environment:
-
-  matrix:
-
-    - PYTHON: "C:\\Python36-x64"
-      PYTHON_VERSION: "3.6.5"
-      PYTHON_ARCH: "64"
-
-platform: x64
+  APPVEYOR_API_KEY:
+    secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
 
 install:
-
-  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
-  - cinst nodejs -y
-  - npm install eyo -g
+- dotnet tool install -g localappveyor --version 0.5.0-alpha.10
 
 build_script:
-
-  - eyo --lint Sasha__Testing--EYo.txt
+- localappveyor lint --token %APPVEYOR_API_KEY%
