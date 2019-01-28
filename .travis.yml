@@ -12,7 +12,11 @@ install:
 - sudo apt-get install dotnet-sdk-2.2
 - dotnet tool install -g localappveyor --version 0.5.0-alpha.10
 script:
-- which LocalAppveyor
+- which LocalAppVeyor
 - which localappveyor
+- whereis LocalAppVeyor
+- whereis localappveyor
+- dpkg-query -L LocalAppveyor
+- dpkg-query -L localappveyor
 - LocalAppveyor lint --token $APPVEYOR_API_KEY
 - localappveyor lint --token $APPVEYOR_API_KEY
