@@ -5,19 +5,18 @@ language: python
 python: 3.7
 git:
   depth: 1
+before_install:
+- PATH=$PATH:$HOME/.dotnet/tools
 install:
 - wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
 - sudo dpkg -i packages-microsoft-prod.deb
 - sudo apt-get update
 - sudo apt-get install dotnet-sdk-2.2
 - dotnet tool install -g localappveyor --version 0.5.0-alpha.10
-- PATH=$PATH:$HOME/.dotnet/tools
 # Show all PATH values:
 # https://unix.stackexchange.com/a/80153/237999
 - tr ':' '\n' <<< "$PATH"
 script:
 # https://stackoverflow.com/a/6355576/5951529
 - find $HOME/ -name 'LocalAppVeyor*'
-- find $HOME/ -name 'localappveyor*'
 - LocalAppVeyor lint --token $APPVEYOR_API_KEY
-- localappveyor lint --token $APPVEYOR_API_KEY
