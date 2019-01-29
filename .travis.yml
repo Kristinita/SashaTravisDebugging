@@ -11,23 +11,13 @@ install:
 - sudo apt-get update
 - sudo apt-get install dotnet-sdk-2.2
 - dotnet tool install -g localappveyor --version 0.5.0-alpha.10
-- PATH=$PATH:~/home/travis/.dotnet/tools
-- PATH=~/home/travis/.dotnet/tools:$PATH
+- PATH=$PATH:$HOME/.dotnet/tools
+# Show all PATH values:
+# https://unix.stackexchange.com/a/80153/237999
+- tr ':' '\n' <<< "$PATH"
 script:
 # https://stackoverflow.com/a/6355576/5951529
 - find $HOME/ -name 'LocalAppVeyor*'
 - find $HOME/ -name 'localappveyor*'
-# https://stackoverflow.com/a/105249/5951529
-- cd $HOME/.dotnet && ls -LR && tree -l
-# which and whereis:
-# https://superuser.com/a/461790/572069
-- which LocalAppVeyor
-- which localappveyor
-- whereis LocalAppVeyor
-- whereis localappveyor
-# dpkg-query:
-# https://superuser.com/a/173347/572069
-- dpkg-query -L LocalAppVeyor
-- dpkg-query -L localappveyor
 - LocalAppVeyor lint --token $APPVEYOR_API_KEY
 - localappveyor lint --token $APPVEYOR_API_KEY
