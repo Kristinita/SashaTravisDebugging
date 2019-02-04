@@ -5,18 +5,40 @@ language: python
 python: 3.7
 git:
   depth: 1
+addons:
+  apt:
+    packages:
+    - parallel
 before_install:
+# Add LocalAppVeyor directory to the end of the PATH environment variable:
+# https://unix.stackexchange.com/a/26067/237999
+# http://www.troubleshooters.com/linux/prepostpath.htm
+# “.dotnet/tools” must be added to PATH:
+# https://github.com/dotnet/cli/issues/9208#issuecomment-386851831
+# DotNet user profile is “USERPROFILE” on Windows and “HOME” on Linux:
+# https://github.com/dotnet/cli/issues/7569#issuecomment-329280924
+# “$HOME” is “/home/travis” on Travis Linux:
+# https://docs.travis-ci.com/user/environment-variables/#default-environment-variables
 - PATH=$PATH:$HOME/.dotnet/tools
 install:
-- wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
-- sudo dpkg -i packages-microsoft-prod.deb
-- sudo apt-get update
-- sudo apt-get install dotnet-sdk-2.2
-- dotnet tool install -g localappveyor --version 0.5.0-alpha.10
+# Install .NET Core for Ubuntu:
+# https://docs.microsoft.com/en-us/windows-server/administration/linux-package-repository-for-microsoft-software#ubuntu
+# [NOTE] Matrix key “dotnet” for C#, F# or Visual Basic projects.
+# If no, you need install .NET Core manually:
+# https://docs.travis-ci.com/user/languages/csharp/
+- wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb && sudo dpkg -i packages-microsoft-prod.deb && sudo apt-get update && sudo apt-get install dotnet-sdk-2.2 && dotnet tool install -g localappveyor --version 0.5.0-alpha.10
+# - wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+# - sudo dpkg -i packages-microsoft-prod.deb
+# - sudo apt-get update
+# - sudo apt-get install dotnet-sdk-2.2
+# - dotnet tool install -g localappveyor --version 0.5.0-alpha.10
 # Show all PATH values:
 # https://unix.stackexchange.com/a/80153/237999
-- tr ':' '\n' <<< "$PATH"
+# - tr ':' '\n' <<< "$PATH"
 script:
 # https://stackoverflow.com/a/6355576/5951529
-- find $HOME/ -name 'LocalAppVeyor*'
+# - find $HOME/ -name 'LocalAppVeyor*'
+# [WARNING] You need “LocalAppVeyor” command, not “localappveyor”;
+# Linux requires register, example:
+# https://travis-ci.org/Kristinita/SashaTravisDebugging/builds/485741198
 - LocalAppVeyor lint --token $APPVEYOR_API_KEY
