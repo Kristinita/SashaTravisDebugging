@@ -5,40 +5,47 @@ language: python
 python: 3.7
 git:
   depth: 1
-addons:
-  apt:
-    packages:
-    - parallel
-before_install:
-# Add LocalAppVeyor directory to the end of the PATH environment variable:
-# https://unix.stackexchange.com/a/26067/237999
-# http://www.troubleshooters.com/linux/prepostpath.htm
-# “.dotnet/tools” must be added to PATH:
-# https://github.com/dotnet/cli/issues/9208#issuecomment-386851831
-# DotNet user profile is “USERPROFILE” on Windows and “HOME” on Linux:
-# https://github.com/dotnet/cli/issues/7569#issuecomment-329280924
-# “$HOME” is “/home/travis” on Travis Linux:
-# https://docs.travis-ci.com/user/environment-variables/#default-environment-variables
-- PATH=$PATH:$HOME/.dotnet/tools
-install:
-# Install .NET Core for Ubuntu:
-# https://docs.microsoft.com/en-us/windows-server/administration/linux-package-repository-for-microsoft-software#ubuntu
-# [NOTE] Matrix key “dotnet” for C#, F# or Visual Basic projects.
-# If no, you need install .NET Core manually:
-# https://docs.travis-ci.com/user/languages/csharp/
-- wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb && sudo dpkg -i packages-microsoft-prod.deb && sudo apt-get update && sudo apt-get install dotnet-sdk-2.2 && dotnet tool install -g localappveyor --version 0.5.0-alpha.10
-# - wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
-# - sudo dpkg -i packages-microsoft-prod.deb
-# - sudo apt-get update
-# - sudo apt-get install dotnet-sdk-2.2
-# - dotnet tool install -g localappveyor --version 0.5.0-alpha.10
-# Show all PATH values:
-# https://unix.stackexchange.com/a/80153/237999
-# - tr ':' '\n' <<< "$PATH"
-script:
-# https://stackoverflow.com/a/6355576/5951529
-# - find $HOME/ -name 'LocalAppVeyor*'
-# [WARNING] You need “LocalAppVeyor” command, not “localappveyor”;
-# Linux requires register, example:
-# https://travis-ci.org/Kristinita/SashaTravisDebugging/builds/485741198
-- LocalAppVeyor lint --token $APPVEYOR_API_KEY
+matrix:
+  include:
+  - script:
+    - mkdir "output/screenshots"
+    - touch "output/screenshots/KiraSecondFile.txt"
+  - script:
+    - echo "Kira Goddess!"
+    - MATRIX_DEPLOY=2
+deploy:
+  provider: pages
+  on:
+    # Deploy site, if “grunt publish”, else “grunt” — not deploy:
+    # https://docs.travis-ci.com/user/deployment#Conditional-Releases-with-on%3A
+    condition: $MATRIX_DEPLOY
+  # [DONE]
+  # # [FIXME] Downgrade dpl for correct deploying to GitHub Pages:
+  # # https://github.com/travis-ci/travis-ci/issues/9312
+  # edge:
+  #   branch: v1.8.47
+  # Don't overwrite commit history of destination repository:
+  # https://docs.travis-ci.com/user/deployment/pages/
+  keep-history: true
+  # Don't clean output folder:
+  # https://docs.travis-ci.com/user/deployment/pages/
+  skip-cleanup: true
+  target-branch: master
+  local-dir: output
+  repo: Kristinita/SashaTravis.github.io
+  # “GITHUB_TOKEN” is secure variable, that set in repository settings:
+  # https://docs.travis-ci.com/user/environment-variables#Defining-Variables-in-Repository-Settings
+  # https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token
+  # [WARNING] You need set secure variables for each repository,
+  # variables for all repositories not possible at the time:
+  # https://github.com/travis-ci/travis-ci/issues/2069
+  github-token: $GITHUB_TOKEN
+  # Name and e-mail of committer:
+  # https://docs.travis-ci.com/user/deployment/pages/#Further-configuration
+  committer-from-gh: true
+  # Automatically generate CNAME for custom domain:
+  fqdn: Kristinita.ru
+  # [WARNING] Don't use single quotes in “project-name”:
+  # https://github.com/travis-ci/travis-ci/issues/9325
+  project-name: Поиск Кристиниты
+  verbose: true
