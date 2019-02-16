@@ -1,8 +1,3 @@
-# Test
-sudo: enabled
-dist: xenial
-language: python
-python: 3.7
 git:
   depth: 1
 matrix:
@@ -10,9 +5,10 @@ matrix:
   - script:
     - mkdir "output/screenshots"
     - touch "output/screenshots/KiraSecondFile.txt"
+    - MATRIX_DEPLOY=1
   - script:
     - echo "Kira Goddess!"
-    - MATRIX_DEPLOY=2
+    - MATRIX_DEPLOY=1
 deploy:
   provider: pages
   on:
@@ -30,7 +26,6 @@ deploy:
   # Don't clean output folder:
   # https://docs.travis-ci.com/user/deployment/pages/
   skip-cleanup: true
-  target-branch: master
   local-dir: output
   repo: Kristinita/SashaTravis.github.io
   # “GITHUB_TOKEN” is secure variable, that set in repository settings:
