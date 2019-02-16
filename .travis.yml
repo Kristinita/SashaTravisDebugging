@@ -1,13 +1,22 @@
 env:
   global:
-    secure: "dz//ThhderTx5W7Nq0kmdo7/j1wRfNp9J595qmmkld4Ywu4dPDEZJeS46dL8optye6h861sKR/RQO4oqzPRQ19X0Xm3SD6yLvSSJh24LpYYQ7r0GcRzi54wJbZ89hI9mS9/kkfEldCsQxnjFYrWVsxJlSi1hjJlncoonyWYbgxOoizCsrOHwOS6ZnbWAi52jjTmr24uj9vj7+TwamFdYWwk55M6DYH40W2f/lah7nr06hLqgbmhM0Zt1Q6YTbzzjOg78UxwnZ0i1jimfe13LRN6zIl1hk6UAKtEQumP9narVkHiSVdElcTf1XwuBeVn2tiG/HJYEYrRWCrvRR5ZN3T8n+ISQ2Us9zZkoJzOQO9vpUW0eh1VcI7Wc7Xn+s3suiw3Gd+C0XS59BPLE8xdK9ERwMgY/ejKAjidM6hTuT0CBndWMYBuCu7ZCv4hgCFodIhbar6rz1CRUuc7KZdtw/OPS1RIuTX08asmjuLJoTkphfKL85uEZFvAI+daPoosO1kxVfufBMyeFLIw30z/j4TvsDr67D1ea7DGb21D+3mMpCrzUTjKm2qD81re6cs6yWnrCrSK67pH/SNot3IqL/4fQMBqvPgbWZ1nus3RQxOBq7UlTY96uZOTjWFG0JHYZY10Cc+gxExAxFEDfjZsnb0SdjdTvI7FqJjYpaF2pMyc="
+    secure: >
+     "dz//ThhderTx5W7Nq0kmdo7/j1wRfNp9J595qmmkld4Ywu4dPDEZJeS46dL8optye6h861sKR/
+     RQO4oqzPRQ19X0Xm3SD6yLvSSJh24LpYYQ7r0GcRzi54wJbZ89hI9mS9/
+     kkfEldCsQxnjFYrWVsxJlSi1hjJlncoonyWYbgxOoizCsrOHwOS6ZnbWAi52jjTmr24uj9vj7+TwamFdYWwk55M6DYH40W2f/
+     lah7nr06hLqgbmhM0Zt1Q6YTbzzjOg78UxwnZ0i1jimfe13LRN6zIl1hk6UAKtEQumP9narVkHiSVdElcTf1XwuBeVn2tiG/
+     HJYEYrRWCrvRR5ZN3T8n+ISQ2Us9zZkoJzOQO9vpUW0eh1VcI7Wc7Xn+s3suiw3Gd+C0XS59BPLE8xdK9ERwMgY/
+     ejKAjidM6hTuT0CBndWMYBuCu7ZCv4hgCFodIhbar6rz1CRUuc7KZdtw/
+     OPS1RIuTX08asmjuLJoTkphfKL85uEZFvAI+daPoosO1kxVfufBMyeFLIw30z/
+     j4TvsDr67D1ea7DGb21D+3mMpCrzUTjKm2qD81re6cs6yWnrCrSK67pH/
+     SNot3IqL/4fQMBqvPgbWZ1nus3RQxOBq7UlTY96uZOTjWFG0JHYZY10Cc+gxExAxFEDfjZsnb0SdjdTvI7FqJjYpaF2pMyc="
 git:
   depth: 1
 matrix:
   include:
   - script:
     - mkdir "output/screenshots"
-    - touch "output/screenshots/ThirdFile.txt"
+    - touch "output/screenshots/SecondFile.txt"
     - MATRIX_DEPLOY=1
   - script:
     - echo "Kira Goddess!"
