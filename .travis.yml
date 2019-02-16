@@ -33,6 +33,7 @@ deploy:
   # https://docs.travis-ci.com/user/deployment/pages/
   skip-cleanup: true
   local-dir: output
+  target-branch: master
   repo: Kristinita/SashaTravis.github.io
   # “GITHUB_TOKEN” is secure variable, that set in repository settings:
   # https://docs.travis-ci.com/user/environment-variables#Defining-Variables-in-Repository-Settings
