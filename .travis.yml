@@ -17,7 +17,7 @@ matrix:
 deploy:
   provider: pages
   on:
-    branch: KiraMultipleDeploy
+    all_branches: true
     # Deploy site, if “grunt publish”, else “grunt” — not deploy:
     # https://docs.travis-ci.com/user/deployment#Conditional-Releases-with-on%3A
     condition: $MATRIX_DEPLOY
