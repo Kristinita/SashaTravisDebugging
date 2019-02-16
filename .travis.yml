@@ -1,3 +1,8 @@
+# Test
+sudo: enabled
+dist: xenial
+language: python
+python: 3.7
 git:
   depth: 1
 matrix:
@@ -12,6 +17,7 @@ matrix:
 deploy:
   provider: pages
   on:
+    branch: KiraMultipleDeploy
     # Deploy site, if “grunt publish”, else “grunt” — not deploy:
     # https://docs.travis-ci.com/user/deployment#Conditional-Releases-with-on%3A
     condition: $MATRIX_DEPLOY
