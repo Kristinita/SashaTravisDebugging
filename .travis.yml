@@ -1,8 +1,3 @@
-# Test
-sudo: enabled
-dist: xenial
-language: python
-python: 3.7
 git:
   depth: 1
 matrix:
@@ -13,41 +8,15 @@ matrix:
     - MATRIX_DEPLOY=1
   - script:
     - echo "Kira Goddess!"
-    - MATRIX_DEPLOY=1
 deploy:
   provider: pages
   on:
     all_branches: true
-    # Deploy site, if “grunt publish”, else “grunt” — not deploy:
-    # https://docs.travis-ci.com/user/deployment#Conditional-Releases-with-on%3A
     condition: $MATRIX_DEPLOY
-  # [DONE]
-  # # [FIXME] Downgrade dpl for correct deploying to GitHub Pages:
-  # # https://github.com/travis-ci/travis-ci/issues/9312
-  # edge:
-  #   branch: v1.8.47
-  # Don't overwrite commit history of destination repository:
-  # https://docs.travis-ci.com/user/deployment/pages/
   keep-history: true
-  # Don't clean output folder:
-  # https://docs.travis-ci.com/user/deployment/pages/
   skip-cleanup: true
   local-dir: output
   target-branch: master
   repo: Kristinita/SashaTravis.github.io
-  # “GITHUB_TOKEN” is secure variable, that set in repository settings:
-  # https://docs.travis-ci.com/user/environment-variables#Defining-Variables-in-Repository-Settings
-  # https://docs.travis-ci.com/user/deployment/pages/#Setting-the-GitHub-token
-  # [WARNING] You need set secure variables for each repository,
-  # variables for all repositories not possible at the time:
-  # https://github.com/travis-ci/travis-ci/issues/2069
   github-token: $GITHUB_TOKEN
-  # Name and e-mail of committer:
-  # https://docs.travis-ci.com/user/deployment/pages/#Further-configuration
-  committer-from-gh: true
-  # Automatically generate CNAME for custom domain:
-  fqdn: Kristinita.ru
-  # [WARNING] Don't use single quotes in “project-name”:
-  # https://github.com/travis-ci/travis-ci/issues/9325
-  project-name: Поиск Кристиниты
   verbose: true
