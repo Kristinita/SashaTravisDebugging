@@ -1,34 +1,17 @@
 env:
   global:
-    secure: >
-     "dz//ThhderTx5W7Nq0kmdo7/j1wRfNp9J595qmmkld4Ywu4dPDEZJeS46dL8optye6h861sKR/
-     RQO4oqzPRQ19X0Xm3SD6yLvSSJh24LpYYQ7r0GcRzi54wJbZ89hI9mS9/
-     kkfEldCsQxnjFYrWVsxJlSi1hjJlncoonyWYbgxOoizCsrOHwOS6ZnbWAi52jjTmr24uj9vj7+TwamFdYWwk55M6DYH40W2f/
-     lah7nr06hLqgbmhM0Zt1Q6YTbzzjOg78UxwnZ0i1jimfe13LRN6zIl1hk6UAKtEQumP9narVkHiSVdElcTf1XwuBeVn2tiG/
-     HJYEYrRWCrvRR5ZN3T8n+ISQ2Us9zZkoJzOQO9vpUW0eh1VcI7Wc7Xn+s3suiw3Gd+C0XS59BPLE8xdK9ERwMgY/
-     ejKAjidM6hTuT0CBndWMYBuCu7ZCv4hgCFodIhbar6rz1CRUuc7KZdtw/
-     OPS1RIuTX08asmjuLJoTkphfKL85uEZFvAI+daPoosO1kxVfufBMyeFLIw30z/
-     j4TvsDr67D1ea7DGb21D+3mMpCrzUTjKm2qD81re6cs6yWnrCrSK67pH/
-     SNot3IqL/4fQMBqvPgbWZ1nus3RQxOBq7UlTY96uZOTjWFG0JHYZY10Cc+gxExAxFEDfjZsnb0SdjdTvI7FqJjYpaF2pMyc="
+  - secure: >
+     "j9d3+sDcf2xrY+Qtiz5YS5W7NkQANi4WkzhZh/9FIbECpjh1JXk99+dlZDdDhFydlq5V7exZgS+2yq8GDp/dcD8rfxRx7hwBA2dcmJy+niSYY8t/I080ApraJ7s7JMKux5aYSlHz/OLClHgTrV64YnylNmQ2etjYjRBPYe7QBt5kXhcvhX4OxloPV2z1eLOu2iA0kH3ZNhaZ6npoAfd6HFcmKHTXzPjG0SM/2sM849DYsXi50LuAl/f/sE5Ecb77bXJz3l1wzntZYY9NB0bGVuqhxXhbfnX43wyFzaooFhuC9yE+7vwCkQYBTlXgRyKuFASJ88MnVZWb5XwxRucYR8kHrH4JHneANz7i/4jTXRhsEUe6LqvTfbyJRR3lUcw0Y+KAZRs9FsBsbPKiPZUphKkbLAtaAyxe0PkMs60FXQgmh4d4J3F3y5YLQwU+7lJXgYzztWFYtmKUQWhSigddlueDri3hPPB2nAcEbRihf2Gx099Xxy6KK7ufv/zBT1OuJJIEDgcq3pHqGZWgiYL3wUmtXMPO2h7GlhQqNP4bnQU2vHRdM95s8xdMEkw0EU8VY1dFKFgOkGqTVdgIQBIk73i91dZyz4PhqdRwa0RQvLa4+gRbYZsM4HLjQ3qRqjLYCCbYZ5ulUSLzpTXqC+4OSDOP//cpWlvUs4RTWOPcdwU="
 git:
   depth: 1
-matrix:
-  include:
-  - script:
-    - mkdir "output/screenshots"
-    - touch "output/screenshots/SecondFile.txt"
-    - MATRIX_DEPLOY=1
-  - script:
-    - echo "Kira Goddess!"
 deploy:
   provider: pages
   on:
     all_branches: true
-    condition: $MATRIX_DEPLOY
   keep-history: true
   skip-cleanup: true
   local-dir: output
   target-branch: master
   repo: Kristinita/SashaTravis.github.io
-  github-token: $GITHUB_TOKEN
+  github-token: $TOKEN_GITHUB_FOR_TRAVIS_DEPLOY
   verbose: true
