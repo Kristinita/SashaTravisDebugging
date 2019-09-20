@@ -10,4 +10,4 @@ install:
 - dotnet tool install -g localappveyor
 
 script:
-- LocalAppVeyor --help
+- localappveyor --help
