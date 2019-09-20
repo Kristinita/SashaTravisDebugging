@@ -3,9 +3,12 @@ addons:
     packages:
     - apt-transport-https
 
+# [INFO] Add DotNet tools directory to PATH
 before_install:
 - PATH=$PATH:$HOME/.dotnet/tools
 
+# [INFO] Install .NET Core SDK on Linux:
+# https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/sdk-current
 install:
 - wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 - sudo dpkg -i packages-microsoft-prod.deb
@@ -15,4 +18,4 @@ install:
 - dotnet tool install -g localappveyor
 
 script:
-- localappveyor --help
+- LocalAppVeyor --help
