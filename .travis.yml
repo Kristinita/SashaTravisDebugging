@@ -1,15 +1,7 @@
 env:
   global:
-  - secure: >
-      "j9d3+sDcf2xrY+Qtiz5YS5W7NkQANi4WkzhZh/9FIbECpjh1JXk99+dlZDdDhFydlq5V7exZgS+2yq8GDp/
-      dcD8rfxRx7hwBA2dcmJy+niSYY8t/I080ApraJ7s7JMKux5aYSlHz/
-      OLClHgTrV64YnylNmQ2etjYjRBPYe7QBt5kXhcvhX4OxloPV2z1eLOu2iA0kH3ZNhaZ6npoAfd6HFcmKHTXzPjG0SM/2sM849DYsXi50LuAl/
-      f/sE5Ecb77bXJz3l1wzntZYY9NB0bGVuqhxXhbfnX43wyFzaooFhuC9yE+7vwCkQYBTlXgRyKuFASJ88MnVZWb5XwxRucYR8kHrH4JHneANz7i/
-      4jTXRhsEUe6LqvTfbyJRR3lUcw0Y+KAZRs9FsBsbPKiPZUphKkbLAtaAyxe0PkMs60FXQgmh4d4J3F3y5YLQwU+
-      7lJXgYzztWFYtmKUQWhSigddlueDri3hPPB2nAcEbRihf2Gx099Xxy6KK7ufv/
-      zBT1OuJJIEDgcq3pHqGZWgiYL3wUmtXMPO2h7GlhQqNP4bnQU2vHRdM95s8xdMEkw0EU8VY1dFKFgOkGqTVdgIQBIk73i91dZyz4PhqdRwa0RQvLa4
-      +gRbYZsM4HLjQ3qRqjLYCCbYZ5ulUSLzpTXqC+4OSDOP/
-      /cpWlvUs4RTWOPcdwU="
+  # [INFO] Equivalent: API_KEY_APPVEYOR = my real key:
+  # https://kristinita.netlify.com/Pages/About-for-developers#AppVeyor
   - secure: >
       "qE2c+aZb9QGtPF9VG6WhAP2iT0mTDAnmueEiqWUctgalhAFAJ4wdSqvHNNv+F2178wE92WcpT3/
       chmJltlBj1Qqx6vWevJR2ff1uNbQnwGHYBw+1c8JOvx7mUvisp/nzU1eIpU50/
@@ -19,22 +11,17 @@ env:
       LzTv+XiosDojqdHr7R10ae/
       2gyExR+uARIvf0dFnTIBztVnKRtzuPYdsPOkU7R6rM8FnMAjK4G5yjJO4QcZqMo+BzY8O2gqWFba6nxhDk1OBWj/14+jU2pfkW8cR4vq3Us/
       upPuNJhHdtv+S5vuuF9/
-      CksWBqUi3QMQYkSMT5Xkv5YcTeWqQe6W4U2hVg7+Tl1jesn2WP6nM6j+/
-      I2W5fJwYWIKB7U0hP6WR0jkrHDvMNfWgaB8VZCxYoVUFvCMf5IBnXgRGkYjJn9KkQv3pfODC5aUdep2mCWL+cYiHBukRncS66bs/
+      CksWBqUi3QMQYkSMT5Xkv5YcTeWqQe6W4U2hVg7+Tl1jesn2WP6nM6j
+      +I2W5fJwYWIKB7U0hP6WR0jkrHDvMNfWgaB8VZCxYoVUFvCMf5IBnXgRGkYjJn9KkQv3pfODC5aUdep2mCWL+cYiHBukRncS66bs/
       EAE="
 
-git:
-  depth: 1
+install:
+- wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+- sudo dpkg -i packages-microsoft-prod.deb
+- sudo apt-get install apt-transport-https
+- sudo apt-get update
+- sudo apt-get install dotnet-sdk-2.2
+- dotnet tool install -g localappveyor
+
 script:
-- echo "Kira Goddess!"
-deploy:
-  provider: pages
-  on:
-    all_branches: true
-  keep-history: true
-  skip-cleanup: true
-  local-dir: output
-  target-branch: master
-  repo: Kristinita/SashaTravis.github.io
-  github-token: $TOKEN_GITHUB_FOR_TRAVIS_DEPLOY
-  verbose: true
+- LocalAppveyor --help
