@@ -24,4 +24,4 @@ install:
 - dotnet tool install -g localappveyor
 
 script:
-- LocalAppveyor --help
+- localappveyor --help
