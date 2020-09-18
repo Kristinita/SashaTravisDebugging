@@ -9,5 +9,8 @@ language: python
 
 python: 3.8
 
+install:
+- sudo apt-get -y install nodejs
+
 script:
 - node --version
