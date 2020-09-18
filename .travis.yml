@@ -9,10 +9,5 @@ language: python
 
 python: 3.8
 
-addons:
-  apt:
-    packages:
-    - nodejs
-
 script:
 - node --version
