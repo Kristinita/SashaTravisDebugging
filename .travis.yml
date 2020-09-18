@@ -9,8 +9,8 @@ language: python
 
 python: 3.8
 
-node_js:
-- 14
+# Test
+node_js: node
 
 script:
 - node --version
