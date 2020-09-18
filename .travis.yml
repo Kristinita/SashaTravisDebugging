@@ -10,7 +10,7 @@ language: python
 python: 3.8
 
 install:
-- nvm install node
+- bash travis-install.sh
 
 script:
 - node --version
