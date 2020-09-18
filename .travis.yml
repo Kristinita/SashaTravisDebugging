@@ -9,5 +9,8 @@ language: python
 
 python: 3.8
 
+node_js:
+- 14
+
 script:
 - node --version
