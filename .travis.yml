@@ -1,16 +1,16 @@
 os: linux
 
-dist: focal
+dist: jammy
 
 git:
   depth: 1
 
 language: python
 
-python: 3.8
+python: 3.12
 
 install:
-- bash travis-install.sh
+- npm install -g pa11y-ci
 
 script:
-- node --version
+- pa11y-ci https://pa11y.org/
