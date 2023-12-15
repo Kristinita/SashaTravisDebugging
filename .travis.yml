@@ -9,8 +9,11 @@ language: python
 
 python: 3.12
 
+addons:
+  chrome: stable
+
 install:
 - npm install -g pa11y-ci
 
 script:
-- pa11y-ci https://pa11y.org/
+- pa11y-ci --config .pa11yci-linux.js https://pa11y.org/
