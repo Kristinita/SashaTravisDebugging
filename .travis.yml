@@ -1,3 +1,7 @@
+before_script:
+- npx pa11y-ci --version
+- npx pa11y --environment
+
 # cache:
 #   directories:
 #   - $HOME/.npm
@@ -14,7 +18,5 @@ install:
 os: linux
 
 script:
-- npx pa11y --version
-- npx pa11y-ci --version
-- npx pa11y https://pa11y.org/ --debug
+- npx pa11y --config .pa11yci.js https://pa11y.org/ --debug
 - npx pa11y-ci --config .pa11yci.js https://pa11y.org/
