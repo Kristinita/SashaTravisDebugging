@@ -1,14 +1,18 @@
 build_script:
-- pa11y-ci --config .pa11yci.js https://pa11y.org/
+- npx pa11y-ci --version
+- npx pa11y-ci --config .pa11yci.js https://pa11y.org/
 
 cache:
 - "%LOCALAPPDATA%\\npm-cache"
 
 clone_depth: 1
 
+environment:
+  APPVEYOR_SAVE_CACHE_ON_ERROR: true
+
 image: Visual Studio 2022
 
 install:
-- npm install --global pa11y-ci
+- npm install
 
 platform: x64

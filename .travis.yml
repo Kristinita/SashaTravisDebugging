@@ -9,11 +9,10 @@ git:
 
 install:
 - nvm install node
-- npm install --global pa11y-ci
-
-language: python
+- npm install
 
 os: linux
 
 script:
-- pa11y-ci --config .pa11yci.js https://pa11y.org/
+- npx pa11y-ci --version
+- npx pa11y-ci --config .pa11yci.js https://pa11y.org/
