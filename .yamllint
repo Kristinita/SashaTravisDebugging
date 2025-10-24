@@ -1,17 +1,197 @@
-# yamllint — linter for YAML files:
+############
+# yamllint #
+############
+# [OVERVIEW] yamllint — linter for YAML files:
 # https://yamllint.readthedocs.io/en/latest/index.html
-# Disable triple dashes in begin of document:
-# https://stackoverflow.com/a/41760135/5951529
-# https://yamllint.readthedocs.io/en/stable/configuration.html#default-configuration
+#
+# [RULES]
+# https://yamllint.readthedocs.io/en/latest/rules.html
+#
+# [CONFIGURATION] Default configuration:
+# https://yamllint.readthedocs.io/en/latest/configuration.html#default-configuration
+#
+# [API] Using yamllint as Python module:
+# https://yamllint.readthedocs.io/en/latest/development.html
+#
+#
+# [INFO] The command “yamllint --list-files .” shows a list of files for yamllint linting:
+# https://yamllint.readthedocs.io/en/latest/configuration.html#yaml-files-extensions
+#
+# [INFO] By default yamllint checks “*.yaml”, “*.yml” and “.yamllint” files.
+# I haven’t additional YAML files in my configuration, so I use default settings.
+# https://yamllint.readthedocs.io/en/latest/configuration.html#yaml-files-extensions
+
+
+# [REQUIRED] Extend default preset. Otherwise, yamllint don’t apply options.
+#
+# [INFO] I added to the “rules” section options,
+# if I want to use values other than the values from the “default” preset.
+#
+# [NOTE] yamllint has “default” preset and “relaxed” preset with fewer rules,
+# but haven’t preset with all rules as “extends:all”:
+# https://github.com/adrienverge/yamllint/issues/659
+extends: default
+
+
+# [INFO] yamllint supports ignoring files and folders from “.gitignore”:
+# https://yamllint.readthedocs.io/en/latest/configuration.html#ignoring-paths
+ignore-from-file: .gitignore
+
+
+# [INFO] Disable rules inside the file:
+# https://yamllint.readthedocs.io/en/latest/disable_with_comments.html
 rules:
-  # Disable triple-dash in YAML documents:
+
+  # [INFO] Anchors and aliases settings:
+  # https://yamllint.readthedocs.io/en/latest/rules.html#module-yamllint.rules.anchors
+  #
+  # [LEARN][YAML] YAML anchors must before aliases, otherwise the markup non-valid.
+  # Ignoring the “key-ordering” rule may be necessary.
+  # https://ktomk.github.io/writing/yaml-anchor-alias-and-merge-key.html
+  anchors:
+
+    # [INFO] Avoid declaring 2 or more anchors with the same name
+    forbid-duplicated-anchors: true
+
+    # [INFO] Avoid using non-declared aliases
+    forbid-undeclared-aliases: true
+
+    # [INFO] Avoid unused anchors
+    forbid-unused-anchors: true
+
+
+  # [INFO] Braces settings:
+  # https://yamllint.readthedocs.io/en/latest/rules.html#module-yamllint.rules.braces
+  braces:
+    # [INFO] I use syntactic sugar indentation instead of braces.
+    #
+    # [INFO] “forbid: non-empty” prohibits the use of braces anywhere other than empty objects:
+    # “object: {}”
+    #
+    # [INFO] YAML empty objects:
+    # https://stackoverflow.com/a/33510095/5951529
+    #
+    # [REQUIRED] Empty braces, if no options in Python Markdown plugins configuration
+    forbid: non-empty
+
+
+  # [INFO] Brackets settings:
+  # https://yamllint.readthedocs.io/en/latest/rules.html#module-yamllint.rules.brackets
+  brackets:
+    # [INFO] I use syntactic sugar indentation instead of brackets.
+    forbid: false
+
+
+  # [INFO] Triple-dot “...” document end marker:
+  # https://yamllint.readthedocs.io/en/latest/rules.html#module-yamllint.rules.document_end
+  #
+  # [NOTE] I disable end marker in the end of the document because I don’t want extra work:
+  document-end:
+    present: false
+
+
+  # [INFO] Triple-dash start marker “---” separate directives from document content.
+  # If no directives — they signal the start of a document:
+  # https://stackoverflow.com/a/21251413/5951529
   # https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.document_start
+  #
+  # [NOTE] I disable start marker in the beginning of the document because I don’t want extra work:
   document-start:
     present: false
-  # Max line length. required parameters “allow-non-breakable-words” and
-  # “allow-non-breakable-inline-mappings”
+
+  # [INFO] Don’t allow empty values everywhere:
+  # https://yamllint.readthedocs.io/en/latest/rules.html#module-yamllint.rules.empty_values
+  empty-values:
+    forbid-in-block-mappings: true
+    forbid-in-block-sequences: true
+    forbid-in-flow-mappings: true
+
+  # [INFO] Indentation settings:
+  # https://yamllint.readthedocs.io/en/latest/rules.html#module-yamllint.rules.indentation
+  indentation:
+
+    # [INFO] Enforce the consistent indentation in multiline strings
+    check-multi-line-strings: true
+
+    # [INFO] Disable indentation for lists. I don’t want to add extra indentation each time when I use lists.
+    #
+    # [EXAMPLE] Passed:
+    # ```yaml
+    # list:
+    # - flying
+    # ```
+    #
+    # Failed:
+    # ```yaml
+    # list:
+    #   - flying
+    # ```
+    indent-sequences: false
+
+    # [INFO] 2 spaces indentation
+    #
+    # [NOTE] YAML doesn’t support tabs indentation:
+    # https://yaml.org/faq.html
+    # Developers criticize this:
+    # https://stackoverflow.com/posts/comments/96808208
+    # https://stackoverflow.com/posts/comments/106094334
+    spaces: 2
+
+
+  # [INFO] Enforce alphabetical key ordering:
+  # https://yamllint.readthedocs.io/en/latest/rules.html#module-yamllint.rules.key_ordering
+  #
+  # [NOTE] Words with capital letters must be before words with any lowercase letters for yamllint key-ordering.
+  # [EXAMPLE] User need place “README.md” before “budget.json”
+  #
+  # [NOTE] Words with space “_” must be before words with any letters
+  # [EXAMPLE] User need place “TAGS_SAVE_AS” before “TAG_SAVE_AS”
+  #
+  # [FIXME][ISSUE] Option for disable “key-ordering” if anchor exists in the value.
+  # Currently, I need ignore “key-ordering” in “amazing_grace_your_variables.yaml” and “paths.yaml” files.
+  key-ordering: {}
+
+
+  # [INFO] Line length parameters:
   # https://yamllint.readthedocs.io/en/latest/rules.html#module-yamllint.rules.line_length
   line-length:
+    # [INFO] Allow non-breakable “inline mappings” — key/value pairs that overflow max line length limit.
+    # I use this rule for allowing long non-breakable secure variables:
+    # https://opensource.com/article/21/9/yaml-cheat-sheet
+    #
+    # [EXAMPLE] This rule allows this line:
+    # - secure: veryverylongsecurevariable
+    allow-non-breakable-inline-mappings: true
+
+    # [INFO] Allow long URLs and other character sets without spaces that overflow max line length limit.
+    # [EXAMPLE] This rule allows the next line:
+    # https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account
+    allow-non-breakable-words: true
+
     max: 120
-    allow-non-breakable-words: false
-    allow-non-breakable-inline-mappings: false
+
+
+  # [INFO] Quotes settings:
+  # https://yamllint.readthedocs.io/en/latest/rules.html#module-yamllint.rules.quoted_strings
+  quoted-strings:
+    # [INFO] Enforce using double quotes, error if single quotes
+    quote-type: double
+
+    # [INFO] Allow quotes solely if they required. Else extra quotes in markup, yamllint return error
+    required: only-when-needed
+
+
+  # [INFO] Use consistent boolean values:
+  # https://yamllint.readthedocs.io/en/latest/rules.html#module-yamllint.rules.truthy
+  truthy:
+    # [INFO] Disable check boolean values in “key” in “key: value” mappings.
+    #
+    # [INFO] The “deploy” section “.travis.yml” uses “on” key:
+    # https://docs.travis-ci.com/user/deployment/pages/
+    #
+    # [EXAMPLE] The option allows this markup:
+    # ```yaml
+    # on:
+    #   branch: main
+    # ```
+    check-keys: false

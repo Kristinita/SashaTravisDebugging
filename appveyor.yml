@@ -1,11 +1,14 @@
+build_script:
+- pa11y-ci --config .pa11yci.js https://pa11y.org/
+
+cache:
+- "%LOCALAPPDATA%\\npm-cache"
+
 clone_depth: 1
 
-environment:
-  APPVEYOR_API_KEY:
-    secure: +tAYCLWvKpNefBmIFHBZzSdFnN8mu71hBU1MqYbrjlY=
+image: Visual Studio 2022
 
 install:
-- dotnet tool install -g localappveyor --version 0.5.0-alpha.10
+- npm install --global pa11y-ci
 
-build_script:
-- localappveyor lint --token %APPVEYOR_API_KEY%
+platform: x64

@@ -1,7 +1,51 @@
-[SashaEclintCharset.txt]
-charset = unset
-end_of_line = unset
-insert_final_newline = unset
-trim_trailing_whitespace = unset
-indent_style = unset
-indent_size = unset
+################
+# EditorConfig #
+################
+# [OVERVIEW] Define and maintain consistent coding styles between different editors and IDEs:
+# http://editorconfig.org/
+#
+# [NOTE] No linters for linting “.editorconfig” file:
+# https://github.com/editorconfig/editorconfig/issues/345
+
+# [INFO] Apply another .editorconfig for subfolder, that for root folder
+# http://editorconfig.org/#file-format-details
+# root = true
+
+# [INFO] UNIX line endings in “.sh” files:
+# https://stackoverflow.com/a/49050430/5951529
+# Tabs = 4 spaces for CoffeeScript always
+[*]
+charset = utf-8
+
+# [BATCH][INFO] Batch files needed CRLF line endings.
+# If batch files has LF line endings, a user may have some problems,
+# for example, I was getting incorrect output, when my comments contained Unicode symbols:
+# https://stackoverflow.com/a/38836221/5951529
+# https://serverfault.com/a/429598/351829
+#
+# [DISABLING_REASON] I no longer use batch files in this project
+end_of_line = lf
+indent_size = 4
+indent_style = tab
+insert_final_newline = true
+
+# [MARKDOWN][INFO] Markdown supports trailing spaces:
+# http://markdown-guide.readthedocs.io/en/latest/basics.html#line-return
+#
+# [DISABLING_REASON] I don’t use trailing spaces in my Markdown, I think it’s an antipattern.
+# I never used in my Markdown code blocks languages that required trailing spaces:
+# https://github.com/DavidAnson/markdownlint/blob/main/doc/md009.md
+trim_trailing_whitespace = true
+
+
+# [NOTE] YAML doesn’t support tabs:
+# http://yaml.org/faq.html
+# https://stackoverflow.com/a/19976827/5951529
+[*.{prettierc,yaml,yamllint,yml}]
+indent_size = 2
+indent_style = space
+
+# [INFO] Read reasons in “.flake8” file:
+# https://github.com/Kristinita/KristinitaPelican/blob/master/.flake8
+[*.py]
+indent_style = space

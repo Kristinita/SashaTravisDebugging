@@ -1,19 +1,19 @@
-os: linux
+cache:
+  directories:
+  - $HOME/.npm
 
-dist: jammy
+dist: noble
 
 git:
   depth: 1
 
+install:
+- nvm install node
+- npm install --global pa11y-ci
+
 language: python
 
-python: 3.12
-
-addons:
-  chrome: stable
-
-install:
-- npm install -g pa11y-ci
+os: linux
 
 script:
-- pa11y-ci --config .pa11yci-linux.js https://pa11y.org/
+- pa11y-ci --config .pa11yci.js https://pa11y.org/
