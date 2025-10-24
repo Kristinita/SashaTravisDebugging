@@ -4,8 +4,8 @@ build_script:
 - npx pa11y https://pa11y.org/ --debug
 - npx pa11y-ci https://pa11y.org/
 
-cache:
-- "%LOCALAPPDATA%\\npm-cache"
+# cache:
+# - "%LOCALAPPDATA%\\npm-cache"
 
 clone_depth: 1
 

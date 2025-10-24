@@ -1,6 +1,6 @@
-cache:
-  directories:
-  - $HOME/.npm
+# cache:
+#   directories:
+#   - $HOME/.npm
 
 dist: noble
 
