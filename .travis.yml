@@ -18,5 +18,5 @@ install:
 os: linux
 
 script:
-- npx pa11y --config .pa11yci.js https://pa11y.org/ --debug
+- npx pa11y https://pa11y.org/ --debug
 - npx pa11y-ci --config .pa11yci.js https://pa11y.org/
