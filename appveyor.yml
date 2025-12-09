@@ -17,7 +17,7 @@ environment:
 image: Visual Studio 2022
 
 install:
-- nvm install node
+- choco install nodejs --yes
 - npm install
 - npx flow-typed install
 
