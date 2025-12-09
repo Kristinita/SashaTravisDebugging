@@ -1,22 +1,24 @@
 before_build:
-- npx pa11y-ci --version
-- npx pa11y --environment
+- node --version
+- npx flow --version
+- npx flow-typed --version
 
 build_script:
-- npx pa11y https://pa11y.org/ --debug
-- npx pa11y-ci --config .pa11yci.js https://pa11y.org/
+- npx flow kira-example.js
 
-# cache:
-# - "%LOCALAPPDATA%\\npm-cache"
+cache:
+- "%LOCALAPPDATA%\\npm-cache"
 
 clone_depth: 1
 
-# environment:
-#   APPVEYOR_SAVE_CACHE_ON_ERROR: true
+environment:
+  APPVEYOR_SAVE_CACHE_ON_ERROR: true
 
 image: Visual Studio 2022
 
 install:
+- nvm install node
 - npm install
+- npx flow-typed install
 
 platform: x64

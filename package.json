@@ -1,23 +1,23 @@
 {
-  "name": "sashatravisdebugging",
-  "version": "1.0.0",
-  "description": "",
-  "homepage": "https://github.com/Kristinita/SashaTravisDebugging#readme",
-  "bugs": {
-    "url": "https://github.com/Kristinita/SashaTravisDebugging/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Kristinita/SashaTravisDebugging.git"
-  },
-  "license": "ISC",
-  "author": "",
-  "type": "commonjs",
-  "main": ".pa11yci.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "devDependencies": {
-    "pa11y-ci": "^4.0.1"
-  }
+	"name": "sashatravisdebugging",
+	"version": "1.0.0",
+	"description": "",
+	"homepage": "https://github.com/Kristinita/SashaTravisDebugging#readme",
+	"bugs": {
+		"url": "https://github.com/Kristinita/SashaTravisDebugging/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Kristinita/SashaTravisDebugging.git"
+	},
+	"license": "ISC",
+	"author": "",
+	"type": "commonjs",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"flow-bin": "^0.293.0",
+		"flow-typed": "^4.1.1"
+	}
 }

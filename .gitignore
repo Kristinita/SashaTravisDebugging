@@ -72,7 +72,8 @@ pelican-plugins/
 # https://github.com/pelican-plugins/search
 search-index.st
 
-
+# [INFO] Flow types
+flow-typed/
 
 ### Python ###
 

@@ -1,10 +1,11 @@
 before_script:
-- npx pa11y-ci --version
-- npx pa11y --environment
+- node --version
+- npx flow --version
+- npx flow-typed --version
 
-# cache:
-#   directories:
-#   - $HOME/.npm
+cache:
+  directories:
+  - $HOME/.npm
 
 dist: noble
 
@@ -14,9 +15,11 @@ git:
 install:
 - nvm install node
 - npm install
+- npx flow-typed install
+
+language: minimal
 
 os: linux
 
 script:
-- npx pa11y https://pa11y.org/ --debug
-- npx pa11y-ci --config .pa11yci.js https://pa11y.org/
+- npx flow kira-example.js
