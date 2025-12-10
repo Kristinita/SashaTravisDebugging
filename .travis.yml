@@ -14,7 +14,8 @@ git:
 
 install:
 - nvm install node
-- npm install
+- npm install --save-dev flow-bin flow-typed
+- npx flow init
 - npx flow-typed install
 
 language: minimal
