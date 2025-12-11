@@ -1,6 +1,5 @@
 before_script:
 - cat /etc/os-release | grep "VERSION"
-- timecli --version
 - python --version
 - .venv/bin/pip --version
 

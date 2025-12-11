@@ -1,6 +1,5 @@
 before_build:
 - ver
-- timecli --version
 - python --version
 - .venv/Scripts/pip --version
 
@@ -20,7 +19,7 @@ install:
 # - choco install python --yes
 - npm install --global @choksheak/timecli
 - python -m venv .venv
-- ".venv/Scripts/python" -m pip install --upgrade pip
+- .venv\\Scripts\\python -m pip install --upgrade pip
 - timecli ".venv/Scripts/pip" install --no-cache-dir --requirement requirements.txt
 - timecli ".venv/Scripts/pip" install hello-world --no-cache-dir
 - timecli ".venv/Scripts/pip" uninstall hello-world --no-cache-dir --yes
