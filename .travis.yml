@@ -13,8 +13,9 @@ git:
   depth: 1
 
 install:
-- pip install uv
-- uv python install 3.14
+- sudo add-apt-repository ppa:deadsnakes/ppa
+- sudo apt-get update
+- sudo apt-get install python3.14
 - npm install --global @choksheak/timecli
 - python -m venv .venv
 - .venv/bin/python -m pip install --upgrade pip
