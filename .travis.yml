@@ -1,7 +1,8 @@
 before_script:
-- node --version
-- npx flow --version
-- npx flow-typed --version
+- cat etc/os-release | grep "VERSION"
+- timecli --version
+- python --version
+- .venv/bin/pip --version
 
 cache:
   directories:
@@ -13,14 +14,15 @@ git:
   depth: 1
 
 install:
-- nvm install node
-- npm install --save-dev flow-bin flow-typed
-- npx flow init
-- npx flow-typed install
+- npm install --global timecli
+- python -m venv .venv
+- .venv/bin/python -m pip install --upgrade pip
+- timecli ".venv/bin/pip" install --no-cache-dir --requirement requirements.txt
+- timecli ".venv/bin/pip" install hello-world --no-cache-dir
+- timecli ".venv/bin/pip" uninstall hello-world --no-cache-dir --yes
 
-language: minimal
+language: generic
 
 os: linux
 
-script:
-- npx flow kira-example.js
+script: skip

@@ -1,10 +1,10 @@
 before_build:
-- node --version
-- npx flow --version
-- npx flow-typed --version
+- ver
+- timecli --version
+- python --version
+- .venv/Scripts/pip --version
 
-build_script:
-- npx flow kira-example.js
+build_script: skip
 
 cache:
 - "%LOCALAPPDATA%\\npm-cache"
@@ -17,9 +17,12 @@ environment:
 image: Visual Studio 2022
 
 install:
-- choco install nodejs --yes
-- npm install --save-dev flow-bin flow-typed
-- npx flow init
-- npx flow-typed install
+- choco install python --yes
+- npm install --global timecli
+- python -m venv .venv
+- .venv/Scripts/python -m pip install --upgrade pip
+- timecli ".venv/Scripts/pip" install --no-cache-dir --requirement requirements.txt
+- timecli ".venv/Scripts/pip" install hello-world --no-cache-dir
+- timecli ".venv/Scripts/pip" uninstall hello-world --no-cache-dir --yes
 
 platform: x64

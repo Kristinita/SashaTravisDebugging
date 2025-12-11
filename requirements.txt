@@ -1,0 +1,7 @@
+flake8-datetimez @ git+https://github.com/Kristinita/flake8-datetimez@KiraPatchPython314
+flake8-logging-format @ git+https://github.com/wigbam/flake8-logging-format@py312
+flake8-return @ git+https://github.com/brandonzorn/flake8-return@ast-nameconstant-to-constant
+flake8-use-pathlib @ git+https://gitlab.com/Kristinita/flake8-use-pathlib@KiraPkgResourcesTrim
+markdown-headdown @ git+https://github.com/fancsali/markdown-headdown@master
+md-mermaid @ git+https://github.com/Kristinita/md_mermaid@KiraMermaidWorking
+pelican-search @ git+https://github.com/Kristinita/search@KiraFixWindowsPath
