@@ -15,6 +15,7 @@ git:
 install:
 - sudo add-apt-repository ppa:deadsnakes/ppa --yes
 - sudo apt-get update --yes
+- sudo apt-get remove python3.12 --yes
 - sudo apt-get install python3.14 --yes
 - npm install --global @choksheak/timecli
 - python -m venv .venv
@@ -26,7 +27,5 @@ install:
 language: generic
 
 os: linux
-
-python: 3.14
 
 script: skip
