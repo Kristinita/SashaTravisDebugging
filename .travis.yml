@@ -13,9 +13,9 @@ git:
   depth: 1
 
 install:
-- sudo add-apt-repository ppa:deadsnakes/ppa
-- sudo apt-get update
-- sudo apt-get install python3.14
+- sudo add-apt-repository ppa:deadsnakes/ppa --yes
+- sudo apt-get update --yes
+- sudo apt-get install python3.14 --yes
 - npm install --global @choksheak/timecli
 - python -m venv .venv
 - .venv/bin/python -m pip install --upgrade pip
