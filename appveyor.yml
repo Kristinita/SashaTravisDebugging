@@ -3,7 +3,8 @@ before_build:
 - C:\\Python314-x64\\python --version
 - .venv\\Scripts\\pip --version
 
-build_script: false
+build_script:
+- echo "Installation was successful!"
 
 cache:
 - "%LOCALAPPDATA%\\npm-cache"
@@ -16,7 +17,6 @@ environment:
 image: Visual Studio 2022
 
 install:
-# - choco install python --yes
 - npm install --global @choksheak/timecli
 - C:\\Python314-x64\\python -m venv .venv
 - .venv\\Scripts\\python -m pip install --upgrade pip
