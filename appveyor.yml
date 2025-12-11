@@ -1,7 +1,7 @@
 before_build:
 - ver
-- python --version
-- .venv/Scripts/pip --version
+- C:\\Python314-x64\\python --version
+- .venv\\Scripts\\pip --version
 
 build_script: false
 
@@ -18,7 +18,7 @@ image: Visual Studio 2022
 install:
 # - choco install python --yes
 - npm install --global @choksheak/timecli
-- python -m venv .venv
+- C:\\Python314-x64\\python -m venv .venv
 - .venv\\Scripts\\python -m pip install --upgrade pip
 - timecli ".venv/Scripts/pip" install --no-cache-dir --requirement requirements.txt
 - timecli ".venv/Scripts/pip" install hello-world --no-cache-dir

@@ -24,4 +24,6 @@ language: generic
 
 os: linux
 
+python: 3.14
+
 script: skip
