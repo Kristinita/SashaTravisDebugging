@@ -14,7 +14,7 @@ git:
   depth: 1
 
 install:
-- npm install --global timecli
+- npm install --global @choksheak/timecli
 - python -m venv .venv
 - .venv/bin/python -m pip install --upgrade pip
 - timecli ".venv/bin/pip" install --no-cache-dir --requirement requirements.txt

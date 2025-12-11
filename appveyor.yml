@@ -4,7 +4,7 @@ before_build:
 - python --version
 - .venv/Scripts/pip --version
 
-build_script: skip
+build_script: false
 
 cache:
 - "%LOCALAPPDATA%\\npm-cache"
@@ -17,8 +17,8 @@ environment:
 image: Visual Studio 2022
 
 install:
-- choco install python --yes
-- npm install --global timecli
+# - choco install python --yes
+- npm install --global @choksheak/timecli
 - python -m venv .venv
 - .venv/Scripts/python -m pip install --upgrade pip
 - timecli ".venv/Scripts/pip" install --no-cache-dir --requirement requirements.txt
