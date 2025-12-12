@@ -1,6 +1,7 @@
 before_script:
 - cat /etc/os-release | grep "VERSION"
-- python --version
+- which python
+- /usr/bin/python3.14 --version
 - .venv/bin/pip --version
 
 cache:
@@ -13,12 +14,8 @@ git:
   depth: 1
 
 install:
-- sudo add-apt-repository ppa:deadsnakes/ppa --yes
-- sudo apt-get update --yes
-- sudo apt-get remove python3.12 --yes
-- sudo apt-get install python3.14 --yes
 - npm install --global @choksheak/timecli
-- python -m venv .venv
+- /usr/bin/python3.14 -m venv .venv
 - .venv/bin/python -m pip install --upgrade pip
 - timecli ".venv/bin/pip" install --no-cache-dir --requirement requirements.txt
 - timecli ".venv/bin/pip" install hello-world --no-cache-dir
