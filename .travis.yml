@@ -3,17 +3,17 @@ before_install:
 
 before_script:
 - cat /etc/os-release | grep "VERSION"
+- python --version
+- pipenv --version
 # - node --version
 # - which python
-- python --version
-- pip --version
-- pipenv --version
+# - pip --version
 # - .venv/bin/pip --version
 
 cache:
   directories:
-  - $HOME/.cache/pip
-  # - $HOME/.npm
+  - $HOME/.npm
+  # - $HOME/.cache/pip
 
 dist: noble
 
@@ -21,10 +21,13 @@ git:
   depth: 1
 
 install:
-- pip install --upgrade pip pipenv
-# - nvm use node
-# - nvm install node
-# - npm install --global @choksheak/timecli
+- nvm install node
+- npm install --global @choksheak/timecli
+- python -m pip install --upgrade pip
+- pip install pipenv
+- timecli pipenv install --dev
+- timecli pipenv install --dev hello-world
+- timecli pipenv uninstall --dev hello-world
 # - python -m venv .venv
 # - .venv/bin/python -m pip install --upgrade pip
 # - timecli ".venv/bin/pip" install --no-cache-dir --requirement requirements.txt

@@ -1,0 +1,8 @@
+[dev-packages]
+flake8-datetimez = {ref = "KiraPatchPython314", git = "https://github.com/Kristinita/flake8-datetimez.git"}
+flake8-logging-format = {ref = "py312", git = "https://github.com/wigbam/flake8-logging-format.git"}
+flake8-return = {ref = "ast-nameconstant-to-constant", git = "https://github.com/brandonzorn/flake8-return.git"}
+flake8-use-pathlib = {ref = "KiraPkgResourcesTrim", git = "https://gitlab.com/Kristinita/flake8-use-pathlib.git"}
+markdown-headdown = {ref = "master", git = "git+https://github.com/fancsali/markdown-headdown.git"}
+md-mermaid = {ref = "KiraMermaidWorking", git = "https://github.com/Kristinita/md_mermaid.git"}
+pelican-search = {ref = "KiraFixWindowsPath", git = "https://github.com/Kristinita/search.git"}
