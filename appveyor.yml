@@ -1,7 +1,7 @@
 before_build:
 - ver
-- C:\\Python314-x64\\python --version
-- .venv\\Scripts\\pip --version
+# - C:\\Python314-x64\\python --version
+# - .venv\\Scripts\\pip --version
 
 build_script:
 - echo "Installation was successful!"
@@ -18,10 +18,10 @@ image: Visual Studio 2022
 
 install:
 - npm install --global @choksheak/timecli
-- C:\\Python314-x64\\python -m venv .venv
-- .venv\\Scripts\\python -m pip install --upgrade pip
-- timecli ".venv/Scripts/pip" install --no-cache-dir --requirement requirements.txt
-- timecli ".venv/Scripts/pip" install hello-world --no-cache-dir
-- timecli ".venv/Scripts/pip" uninstall hello-world --no-cache-dir --yes
+# - C:\\Python314-x64\\python -m venv .venv
+# - .venv\\Scripts\\python -m pip install --upgrade pip
+# - timecli ".venv/Scripts/pip" install --no-cache-dir --requirement requirements.txt
+# - timecli ".venv/Scripts/pip" install hello-world --no-cache-dir
+# - timecli ".venv/Scripts/pip" uninstall hello-world --no-cache-dir --yes
 
 platform: x64

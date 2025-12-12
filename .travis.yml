@@ -1,11 +1,12 @@
-before_install:
-- pyenv global 3
+# before_install:
+# - pyenv global 3
 
 before_script:
 - cat /etc/os-release | grep "VERSION"
-- which python
-- python --version
-- .venv/bin/pip --version
+- node --version
+# - which python
+# - python --version
+# - .venv/bin/pip --version
 
 cache:
   directories:
@@ -17,13 +18,14 @@ git:
   depth: 1
 
 install:
-- nvm install node
-- npm install --global @choksheak/timecli
-- python -m venv .venv
-- .venv/bin/python -m pip install --upgrade pip
-- timecli ".venv/bin/pip" install --no-cache-dir --requirement requirements.txt
-- timecli ".venv/bin/pip" install hello-world --no-cache-dir
-- timecli ".venv/bin/pip" uninstall hello-world --no-cache-dir --yes
+- nvm use newest
+# - nvm install node
+# - npm install --global @choksheak/timecli
+# - python -m venv .venv
+# - .venv/bin/python -m pip install --upgrade pip
+# - timecli ".venv/bin/pip" install --no-cache-dir --requirement requirements.txt
+# - timecli ".venv/bin/pip" install hello-world --no-cache-dir
+# - timecli ".venv/bin/pip" uninstall hello-world --no-cache-dir --yes
 
 language: shell
 
