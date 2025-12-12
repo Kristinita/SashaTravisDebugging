@@ -1,7 +1,8 @@
 before_build:
 - ver
 - C:\\Python314-x64\\python --version
-- pipenv --version
+- C:\\Python314-x64\\Scripts\\pip --version
+- C:\\Python314-x64\\Scripts\\pipenv --version
 # - .venv\\Scripts\\pip --version
 
 build_script:
@@ -19,7 +20,7 @@ environment:
 image: Visual Studio 2022
 
 install:
-- C:\\Python314-x64\\Scripts\\pip install pipenv
+- C:\\Python314-x64\\Scripts\\pip install --upgrade pip pipenv
 # - npm install --global @choksheak/timecli
 # - C:\\Python314-x64\\python -m venv .venv
 # - .venv\\Scripts\\python -m pip install --upgrade pip

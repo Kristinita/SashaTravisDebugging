@@ -6,6 +6,7 @@ before_script:
 # - node --version
 # - which python
 - python --version
+- pip --version
 - pipenv --version
 # - .venv/bin/pip --version
 
@@ -20,7 +21,7 @@ git:
   depth: 1
 
 install:
-- pip install pipenv
+- pip install --upgrade pip pipenv
 # - nvm use node
 # - nvm install node
 # - npm install --global @choksheak/timecli
