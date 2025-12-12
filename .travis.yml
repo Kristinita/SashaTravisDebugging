@@ -1,24 +1,26 @@
-# before_install:
-# - pyenv global 3
+before_install:
+- pyenv global 3
 
 before_script:
 - cat /etc/os-release | grep "VERSION"
-- node --version
+# - node --version
 # - which python
-# - python --version
+- python --version
+- pipenv --version
 # - .venv/bin/pip --version
 
 cache:
   directories:
-  - $HOME/.npm
+  - $HOME/.cache/pip
+  # - $HOME/.npm
 
 dist: noble
 
 git:
   depth: 1
 
-install:
-- nvm use node
+install: skip
+# - nvm use node
 # - nvm install node
 # - npm install --global @choksheak/timecli
 # - python -m venv .venv

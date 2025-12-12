@@ -1,13 +1,15 @@
 before_build:
 - ver
-# - C:\\Python314-x64\\python --version
+- C:\\Python314-x64\\python --version
+- pipenv --version
 # - .venv\\Scripts\\pip --version
 
 build_script:
 - echo "Installation was successful!"
 
 cache:
-- "%LOCALAPPDATA%\\npm-cache"
+# - "%LOCALAPPDATA%\\npm-cache"
+- "%LOCALAPPDATA%\\pip\\cache"
 
 clone_depth: 1
 
@@ -17,7 +19,8 @@ environment:
 image: Visual Studio 2022
 
 install:
-- npm install --global @choksheak/timecli
+- echo "Installation was beginning!"
+# - npm install --global @choksheak/timecli
 # - C:\\Python314-x64\\python -m venv .venv
 # - .venv\\Scripts\\python -m pip install --upgrade pip
 # - timecli ".venv/Scripts/pip" install --no-cache-dir --requirement requirements.txt
