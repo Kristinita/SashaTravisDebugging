@@ -14,15 +14,16 @@ git:
   depth: 1
 
 install:
-- pyenv global 3.14.0
+- nvm install node
 - npm install --global @choksheak/timecli
+- pyenv global 3.14.0
 - python -m venv .venv
 - .venv/bin/python -m pip install --upgrade pip
 - timecli ".venv/bin/pip" install --no-cache-dir --requirement requirements.txt
 - timecli ".venv/bin/pip" install hello-world --no-cache-dir
 - timecli ".venv/bin/pip" uninstall hello-world --no-cache-dir --yes
 
-language: generic
+language: shell
 
 os: linux
 
