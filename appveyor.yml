@@ -19,7 +19,7 @@ environment:
 image: Visual Studio 2022
 
 install:
-- echo "Installation was beginning!"
+- C:\\Python314-x64\\Scripts\\pip install pipenv
 # - npm install --global @choksheak/timecli
 # - C:\\Python314-x64\\python -m venv .venv
 # - .venv\\Scripts\\python -m pip install --upgrade pip

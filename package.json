@@ -15,5 +15,10 @@
 	"type": "commonjs",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^20.2.0",
+		"@commitlint/config-conventional": "^20.2.0",
+		"simple-git-hooks": "^2.13.1"
 	}
 }

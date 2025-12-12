@@ -19,7 +19,8 @@ dist: noble
 git:
   depth: 1
 
-install: skip
+install:
+- pip install pipenv
 # - nvm use node
 # - nvm install node
 # - npm install --global @choksheak/timecli
