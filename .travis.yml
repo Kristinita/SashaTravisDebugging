@@ -18,7 +18,7 @@ git:
   depth: 1
 
 install:
-- nvm use newest
+- nvm use node
 # - nvm install node
 # - npm install --global @choksheak/timecli
 # - python -m venv .venv
