@@ -21,7 +21,6 @@ image: Visual Studio 2022
 install:
 - choco install nodejs --yes
 - npm install --save-dev flow-bin flow-typed shx
-- npx flow init
 - npx flow-typed install
 
 platform: x64
