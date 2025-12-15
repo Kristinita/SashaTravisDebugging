@@ -63,7 +63,7 @@ pelican_cache/
 # 1. I use latest packages versions, not specific
 # 2. Extra big files in repository
 Pipfile.lock
-# package-lock.json
+package-lock.json
 
 # [INFO] Pelican third-party plugins installed via Peru
 pelican-plugins/

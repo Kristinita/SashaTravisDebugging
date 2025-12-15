@@ -16,11 +16,11 @@ git:
 
 install:
 - nvm install node
-- npm install --save-dev flow-bin flow-typed
+- npm install --save-dev flow-bin flow-typed shx
 - npx flow init
 - npx flow-typed install
 
-language: minimal
+language: shell
 
 os: linux
 
