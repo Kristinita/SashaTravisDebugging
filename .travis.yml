@@ -1,7 +1,9 @@
 before_script:
+- cat /etc/os-release | grep "VERSION"
 - node --version
 - npx flow --version
 - npx flow-typed --version
+- npx shx ls -R flow-typed
 
 cache:
   directories:
