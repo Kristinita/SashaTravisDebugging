@@ -2,7 +2,7 @@ before_build:
 - ver
 - C:\\Python314-x64\\python --version
 - C:\\Python314-x64\\Scripts\\pip --version
-- pydoclint --version
+- C:\\Python314-x64\\Scripts\\pydoclint --version
 
 build_script:
 - echo "Installation was successful!"
