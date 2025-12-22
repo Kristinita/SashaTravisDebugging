@@ -1,36 +1,26 @@
 before_build:
 - ver
-- python --version
-- pipenv --version
-# - .venv\\Scripts\\pip --version
+- C:\\Python314-x64\\python --version
+- C:\\Python314-x64\\Scripts\\pip --version
+- pydoclint --version
 
 build_script:
 - echo "Installation was successful!"
 
 cache:
-- "%LOCALAPPDATA%\\npm-cache"
-# - "%LOCALAPPDATA%\\pip\\cache"
+# - "%LOCALAPPDATA%\\npm-cache"
+- "%LOCALAPPDATA%\\pip\\cache"
 
 clone_depth: 1
 
 environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
-  PYTHON: C:\Python314-x64
+  # PYTHON: C:\Python314-x64
 
 image: Visual Studio 2022
 
 install:
-- npm install --global @choksheak/timecli
-- "%APPVEYOR_BUILD_FOLDER%/batch/appveyor-pathed.bat"
-- refreshenv
-- pip install pipenv
-- timecli pipenv install --dev
-- timecli pipenv install --dev hello-world
-- timecli pipenv uninstall --dev hello-world
-# - C:\\Python314-x64\\python -m venv .venv
-# - .venv\\Scripts\\python -m pip install --upgrade pip
-# - timecli ".venv/Scripts/pip" install --no-cache-dir --requirement requirements.txt
-# - timecli ".venv/Scripts/pip" install hello-world --no-cache-dir
-# - timecli ".venv/Scripts/pip" uninstall hello-world --no-cache-dir --yes
+- C:\\Python314-x64\\python -m pip install --upgrade pip
+- C:\\Python314-x64\\Scripts\\pip install pydoclint
 
 platform: x64

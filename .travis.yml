@@ -4,16 +4,13 @@ before_install:
 before_script:
 - cat /etc/os-release | grep "VERSION"
 - python --version
-- pipenv --version
-# - node --version
-# - which python
-# - pip --version
-# - .venv/bin/pip --version
+- pip --version
+- pydoclint --version
 
 cache:
   directories:
-  - $HOME/.npm
-  # - $HOME/.cache/pip
+  # - $HOME/.npm
+  - $HOME/.cache/pip
 
 dist: noble
 
@@ -21,18 +18,8 @@ git:
   depth: 1
 
 install:
-- nvm install node
-- npm install --global @choksheak/timecli
 - python -m pip install --upgrade pip
-- pip install pipenv
-- timecli pipenv install --dev
-- timecli pipenv install --dev hello-world
-- timecli pipenv uninstall --dev hello-world
-# - python -m venv .venv
-# - .venv/bin/python -m pip install --upgrade pip
-# - timecli ".venv/bin/pip" install --no-cache-dir --requirement requirements.txt
-# - timecli ".venv/bin/pip" install hello-world --no-cache-dir
-# - timecli ".venv/bin/pip" uninstall hello-world --no-cache-dir --yes
+- pip install pydoclint
 
 language: shell
 
